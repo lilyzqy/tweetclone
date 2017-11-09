@@ -69,7 +69,7 @@
 
 const FollowToggle = __webpack_require__(1);
 const UsersSearch = __webpack_require__(3);
-
+const TweetCompose = __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"./tweet-compose.js\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
 
 $(() => {
   $('.follow-toggle').each((i,el)=> {
@@ -167,6 +167,15 @@ const APIUtil = {
         query: queryVal
       },
       success: success
+    });
+  },
+
+  createTweet: (data) => {
+    return $.ajax({
+      method:"POST",
+      url:"/tweets",
+      dataType:"json",
+      data: data
     });
   }
 };
